@@ -1,0 +1,124 @@
+<!-- Así se sabe que el doc es un html -->
+<!DOCTYPE html>  
+<!-- Lenguaje en español -->
+<html lang="es">  
+<!-- Esta parte es donde se realizan todas las configuraciones que queremos en la web -->
+<head>
+  <meta charset="UTF-8">
+  <title>Facilidad de los CAPTCHAS - TFG</title>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+  <style>
+    body {
+    /*Si no encuentra la fuente calibri ni roboto, cogerá una de la familia sans-serif */
+      font-family: 'Source Sans Pro', Calibri, sans-serif; 
+      background-color: #b3e9ff; 
+      text-align: center;
+      padding: 20px;
+    }
+    #lista-captchas {
+      display: block;
+      list-style: none;
+      padding: 0;
+      margin: 0 auto;
+      width: fit-content;
+    }
+    #lista-captchas li {
+      background-color: white;
+      border: 2px solid #55c1ff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 10px;
+      width: 250px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: move;
+      transition: transform 0.2s;
+    }
+    #lista-captchas img {
+      width: 150px;
+      height: auto;
+    }
+    button {
+      background-color: #5887ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005bb5;
+    }
+    h1 {
+      font-size: 20px;
+    }
+    h2 {
+      font-size: 16px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="contenido-principal">
+    <h1>Por favor, ordena estos CAPTCHAS desde el que consideres más difícil de leer al más fácil</h1>
+    <h2>Para ordenarlos, arrástralos hasta tener el orden que prefieras. Después, pulsa el botón "Enviar respuesta".</h2>
+    <!-- Estos son los captchas a ordenar, cada fila es uno -->
+    <ul id="lista-captchas">
+      <li id="captcha1"><img src="Captchas_cuestionario/captcha1.jpg" alt="Captcha 1"></li>
+      <li id="captcha2"><img src="Captchas_cuestionario/captcha2.jpg" alt="Captcha 2"></li>
+      <li id="captcha3"><img src="Captchas_cuestionario/captcha3.jpg" alt="Captcha 3"></li>
+      <li id="captcha4"><img src="Captchas_cuestionario/captcha4.png" alt="Captcha 4"></li>
+      <li id="captcha5"><img src="Captchas_cuestionario/captcha5.png" alt="Captcha 5"></li>
+      <li id="captcha6"><img src="Captchas_cuestionario/captcha6.jpg" alt="Captcha 6"></li>
+      <li id="captcha7"><img src="Captchas_cuestionario/captcha7.jpeg" alt="Captcha 7"></li>
+      <li id="captcha8"><img src="Captchas_cuestionario/captcha8.jpg" alt="Captcha 8"></li>
+      <li id="captcha9"><img src="Captchas_cuestionario/captcha9.jpg" alt="Captcha 9"></li>
+      <li id="captcha10"><img src="Captchas_cuestionario/captcha10.png" alt="Captcha 10"></li>
+      <li id="captcha11"><img src="Captchas_cuestionario/captcha11.jpg" alt="Captcha 11"></li>
+      <li id="captcha12"><img src="Captchas_cuestionario/captcha12.png" alt="Captcha 12"></li>
+    </ul>
+
+    <!-- Botón para enviar el orden -->
+    <button onclick="enviarOrden()">Enviar orden</button>
+  </div>
+
+<p id="mensaje-final" style="margin-top: 20px; font-size: 20px; color: #000000;"></p>
+
+<!-- Script para activar el arrastre con Sortable -->
+<script>
+  new Sortable(document.getElementById('lista-captchas'), {
+    animation: 150 // Suavidad del arrastre
+  });
+</script>
+
+<!-- Script para ENVIAR el orden a Google Forms -->
+<script>
+function enviarOrden() {
+  const lista = document.querySelectorAll("#lista-captchas li");
+  let orden = [];
+  lista.forEach(item => orden.push(item.id));
+
+  const formData = new FormData();
+  formData.append("entry.1588338590", orden.join(", ")); // ID correcto
+
+  fetch("https://docs.google.com/forms/d/e/1FAIpQLScoHxqcxd-9xUigjwAbiIkMSK9-6U6JrXZvwd-G0vtHAPWLdg/formResponse", {
+    method: "POST",
+    mode: "no-cors",
+    body: formData
+  }).then(() => {
+    document.getElementById("contenido-principal").style.display = "none";
+    document.getElementById("mensaje-final").style.display = "block";
+    document.getElementById("mensaje-final").innerText = "¡Muchísimas graciar por participar en mi pequeña encuesta! Ya puedes cerrar esta página🎉";
+  }).catch(() => {
+    document.getElementById("mensaje-final").innerText = "Hubo un error al enviar el formulario. 😢 Inténtalo de nuevo.";
+  });
+}
+</script>
+
+</body>
+</html>
