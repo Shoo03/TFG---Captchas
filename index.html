@@ -173,9 +173,19 @@ function enviarOrden() {
 }
 
 function abrirImagen(url) {
-  basicLightbox.create(`
+  const instancia = basicLightbox.create(`
     <img src="${url}" alt="Captcha ampliado" style="max-width: 90vw; max-height: 90vh;">
-  `).show()
+  `);
+
+  instancia.show();
+
+  // Cerrarlo al clicar fuera
+  document.addEventListener('click', function cerrar(e) {
+    if (!e.target.closest('.basicLightbox__placeholder img')) {
+      instancia.close();
+      document.removeEventListener('click', cerrar);
+    }
+  });
 }
 </script>
 
