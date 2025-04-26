@@ -8,8 +8,8 @@
   <title>Facilidad de los CAPTCHAS - TFG</title>
   <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/basiclightbox@5.0.4/dist/basicLightbox.min.js"></script>
   <style>
     body {
     /*Si no encuentra la fuente calibri ni roboto, cogerá una de la familia sans-serif */
@@ -72,64 +72,40 @@
     <!-- Estos son los captchas a ordenar, cada fila es uno -->
     <ul id="lista-captchas">
       <li id="captcha1">
-        <a href="Captchas_cuestionario/captcha1.jpg" data-lightbox="captchas" data-title="Captcha 1">
-          <img src="Captchas_cuestionario/captcha1.jpg" alt="Captcha 1">
-        </a>
+        <img src="Captchas_cuestionario/captcha1.jpg" alt="Captcha 1" onclick="abrirImagen(this.src)">
       </li>
       <li id="captcha2">
-        <a href="Captchas_cuestionario/captcha2.jpg" data-lightbox="captchas" data-title="Captcha 2">
-          <img src="Captchas_cuestionario/captcha2.jpg" alt="Captcha 2">
-        </a>
+        <img src="Captchas_cuestionario/captcha2.jpg" alt="Captcha 2" onclick="abrirImagen(this.src)">
       </li>
       <li id="captcha3">
-        <a href="Captchas_cuestionario/captcha3.jpg" data-lightbox="captchas" data-title="Captcha 3">
-          <img src="Captchas_cuestionario/captcha3.jpg" alt="Captcha 3">
-        </a>
-      </li><a href="Captchas_cuestionario/captcha6.jpg" data-lightbox="captchas" data-title="Captcha 6">
+        <img src="Captchas_cuestionario/captcha3.jpg" alt="Captcha 3" onclick="abrirImagen(this.src)">
+      </li>
       <li id="captcha4">
-        <a href="Captchas_cuestionario/captcha4.png" data-lightbox="captchas" data-title="Captcha 4">
-          <img src="Captchas_cuestionario/captcha4.png" alt="Captcha 4">
-        </a>
+        <img src="Captchas_cuestionario/captcha4.png" alt="Captcha 4" onclick="abrirImagen(this.src)">
       </li>
       <li id="captcha5">
-        <a href="Captchas_cuestionario/captcha5.png" data-lightbox="captchas" data-title="Captcha 5">
-          <img src="Captchas_cuestionario/captcha5.png" alt="Captcha 5">
-        </a>
+        <img src="Captchas_cuestionario/captcha5.png" alt="Captcha 5" onclick="abrirImagen(this.src)">
       </li>
       <li id="captcha6">
-        <a href="Captchas_cuestionario/captcha6.jpg" data-lightbox="captchas" data-title="Captcha 6">
-          <img src="Captchas_cuestionario/captcha6.jpg" alt="Captcha 6">
-        </a>
+        <img src="Captchas_cuestionario/captcha6.jpg" alt="Captcha 6" onclick="abrirImagen(this.src)">
       </li>
       <li id="captcha7">
-        <a href="Captchas_cuestionario/captcha7.jpeg" data-lightbox="captchas" data-title="Captcha 7">
-          <img src="Captchas_cuestionario/captcha7.jpeg" alt="Captcha 7">
-        </a>
+        <img src="Captchas_cuestionario/captcha7.jpeg" alt="Captcha 7" onclick="abrirImagen(this.src)">
       </li>
       <li id="captcha8">
-        <a href="Captchas_cuestionario/captcha8.jpg" data-lightbox="captchas" data-title="Captcha 8">
-          <img src="Captchas_cuestionario/captcha8.jpg" alt="Captcha 8">
-        </a>
+        <img src="Captchas_cuestionario/captcha8.jpg" alt="Captcha 8" onclick="abrirImagen(this.src)">
       </li>
       <li id="captcha9">
-        <a href="Captchas_cuestionario/captcha9.jpg" data-lightbox="captchas" data-title="Captcha 9">
-          <img src="Captchas_cuestionario/captcha9.jpg" alt="Captcha 9">
-        </a>
+        <img src="Captchas_cuestionario/captcha9.jpg" alt="Captcha 9" onclick="abrirImagen(this.src)">
       </li>
       <li id="captcha10">
-        <a href="Captchas_cuestionario/captcha10.png" data-lightbox="captchas" data-title="Captcha 10">
-          <img src="Captchas_cuestionario/captcha10.png" alt="Captcha 10">
-        </a>
+        <img src="Captchas_cuestionario/captcha10.png" alt="Captcha 10" onclick="abrirImagen(this.src)">
       </li>
       <li id="captcha11">
-        <a href="Captchas_cuestionario/captcha11.jpg" data-lightbox="captchas" data-title="Captcha 11">
-          <img src="Captchas_cuestionario/captcha11.jpg" alt="Captcha 11">
-        </a>
+        <img src="Captchas_cuestionario/captcha11.jpg" alt="Captcha 11" onclick="abrirImagen(this.src)">
       </li>
       <li id="captcha12">
-        <a href="Captchas_cuestionario/captcha12.png" data-lightbox="captchas" data-title="Captcha 12">
-          <img src="Captchas_cuestionario/captcha12.png" alt="Captcha 12">
-        </a>
+        <img src="Captchas_cuestionario/captcha12.png" alt="Captcha 12" onclick="abrirImagen(this.src)">
       </li>
     </ul>
 
@@ -163,10 +139,16 @@ function enviarOrden() {
   }).then(() => {
     document.getElementById("contenido-principal").style.display = "none";
     document.getElementById("mensaje-final").style.display = "block";
-    document.getElementById("mensaje-final").innerText = "¡Muchísimas graciar por participar en mi pequeña encuesta! Ya puedes cerrar esta página🎉";
+    document.getElementById("mensaje-final").innerText = "¡Muchísimas gracias por participar en mi pequeña encuesta! Ya puedes cerrar esta página🎉";
   }).catch(() => {
     document.getElementById("mensaje-final").innerText = "Hubo un error al enviar el formulario. 😢 Inténtalo de nuevo.";
   });
+}
+
+function abrirImagen(url) {
+  basicLightbox.create(`
+    <img src="${url}" alt="Captcha ampliado" style="max-width: 90vw; max-height: 90vh;">
+  `).show()
 }
 </script>
 
